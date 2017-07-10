@@ -104,4 +104,12 @@ public class Animation {
     public void setTransformationMatrix(Matrix4f transformationMatrix) {
         this.transformationMatrix = transformationMatrix;
     }
+
+    public Vector2f getDimension(Vector2f scale){
+        return TextureUtils.getDimension(parts[0], scale);
+    }
+
+    public void cleanUp(){
+        vao.cleanUp();
+    }
 }

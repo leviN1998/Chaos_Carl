@@ -9,6 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="slick" level="application" />
     <orderEntry type="library" name="lwjgl" level="application" />
-    <orderEntry type="library" name="2DEngine202" level="project" />
+    <orderEntry type="library" name="2DEngine203" level="project" />
   </component>
 </module>
