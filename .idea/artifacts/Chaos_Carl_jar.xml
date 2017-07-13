@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Chaos_Carl:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Chaos_Carl_jar</output-path>
+    <root id="archive" name="Chaos_Carl.jar">
+      <element id="module-output" name="Chaos_Carl" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/2D-Engine/jars/2DEngine203.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

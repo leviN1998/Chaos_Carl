@@ -4,13 +4,8 @@ import de.levin.chaos.carl.game.background.TextureObject;
 import de.levin.chaos.carl.game.player.Animation;
 import de.levin.engine2d.Shader.ModularShader;
 import de.levin.engine2d.button.ButtonTemplate;
-import de.levin.engine2d.model.PositionedVAO;
-import de.levin.engine2d.model.TexturedVAO;
-import de.levin.engine2d.model.Vao;
-import de.levin.engine2d.toolbox.Data;
 import de.levin.engine2d.toolbox.DisplayManager;
 import de.levin.engine2d.toolbox.MatrixMaths;
-import de.levin.engine2d.toolbox.utils.TextureUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 /**
@@ -68,10 +63,13 @@ public class Button extends ButtonTemplate{
             clicked.update();
             if (clicked.isFirstCycle()){
                 clicked.stop();
-                clicked.startCycle();
+                //clicked.startCycle();
+                start = true;
             }
         }
     }
+
+    public boolean start = false;
 
     public void draw(ModularShader passThrough){
         if (clicked.isRunning()){

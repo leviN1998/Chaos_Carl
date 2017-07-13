@@ -62,6 +62,7 @@ public class Animation {
 
     public void startCycle(){
         firstCycle = false;
+        currentPart = 0;
     }
 
     public boolean isFirstCycle(){

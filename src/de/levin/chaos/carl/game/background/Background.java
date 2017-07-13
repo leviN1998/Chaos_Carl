@@ -1,6 +1,8 @@
 package de.levin.chaos.carl.game.background;
 
+import de.levin.chaos.carl.game.obstacles.EntityManager;
 import de.levin.engine2d.Shader.ModularShader;
+import de.levin.engine2d.hitbox.SquareHitbox;
 import de.levin.engine2d.model.TexturedVAO;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -17,12 +19,15 @@ public class Background {
 
     private float speed;
 
+    private EntityManager manager;
+
     public Background(String file, int objCount, Vector2f scale, float offset){
         this.path = file;
         this.scale = scale;
         this.offset = offset;
         objects = new TextureObject[objCount];
         init();
+        manager = new EntityManager(new Vector2f(0,-2.85f));
     }
 
 
@@ -39,11 +44,12 @@ public class Background {
         speed = 0.04f;
     }
 
-    public void update(float delta){
-        speed = 0.03f * delta;
+    public void update(float delta, SquareHitbox player){
+        speed = 0.07f * delta;  //0.3
         for (int i = 0;i<objects.length;i++) {
             moveObject(objects[i],i);
         }
+        manager.update(-speed, player);
     }
 
     public void increaseSpeed(float inc){
@@ -82,6 +88,7 @@ public class Background {
         for (int i = 0;i<objects.length;i++){
             objects[i].draw(activePassThrough);
         }
+        manager.draw(activePassThrough);
     }
 
     public void cleanUp(){

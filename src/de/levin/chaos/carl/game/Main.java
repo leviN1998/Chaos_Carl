@@ -5,6 +5,7 @@ import de.levin.chaos.carl.game.background.TextureObject;
 import de.levin.chaos.carl.game.player.Player;
 import de.levin.engine2d.Shader.ModularShader;
 import de.levin.engine2d.toolbox.DisplayManager;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
@@ -42,12 +43,32 @@ public class Main implements Runnable{
         background = new Background("res/background/collegeblockteil.jpg", 8, new Vector2f(11.3f, 11.3f), 0);
         passThrough = ModularShader.createPassThrough();
         player = new Player(new Vector2f(-6, -2.71f), new Vector2f(3,3), 0);
-
+        player.update();
     }
 
     private void update(){
-        background.update(1);
-        player.update();
+        if (Keyboard.isKeyDown(Keyboard.KEY_A)){
+            disableStop = true;
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_D)){
+            disableStop = false;
+            stop = false;
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_P)){
+            stop = false;
+            init();
+            return;
+        }
+
+        if (disableStop){
+            background.update(1, player.getHitbox());
+            player.update();
+        }else if (!stop) {
+            background.update(1, player.getHitbox());
+            player.update();
+        }
     }
 
     private void render(){
@@ -63,6 +84,12 @@ public class Main implements Runnable{
         passThrough.cleanUp();
         background.cleanUp();
     }
+
+    public static void stop(){
+        stop = true;
+    }
+    private static boolean stop = false;
+    private static boolean disableStop = false;
 
     public static void main(String[] args) {
         new Main().run();

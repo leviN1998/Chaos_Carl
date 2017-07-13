@@ -33,7 +33,7 @@ public class ButtonMaster {
     private Button play;
 
     public ButtonMaster(){
-        Animation a = new Animation(playString, playNames, 10);
+        Animation a = new Animation(playString, playNames, 5);
         play = new Button(new Vector2f(0,0),new Vector2f(3,3), playString+"15.png", a);
     }
 
@@ -47,6 +47,10 @@ public class ButtonMaster {
 
     public void cleanUp(){
         play.cleanUp();
+    }
+
+    public boolean getStart(){
+        return play.start;
     }
 
 }

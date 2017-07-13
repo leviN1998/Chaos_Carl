@@ -1,5 +1,6 @@
 package de.levin.chaos.carl.game.menu;
 
+import de.levin.chaos.carl.game.Main;
 import de.levin.engine2d.Shader.ModularShader;
 import de.levin.engine2d.toolbox.DisplayManager;
 import org.jcp.xml.dsig.internal.MacOutputStream;
@@ -25,6 +26,7 @@ public class MenuMain implements Runnable{
         while(!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
             GL11.glClearColor(1,1f,1,1);
+            if (buttonMaster.getStart()) break;
             this.update();
             this.render();
             DisplayManager.updateDisplay();
@@ -32,6 +34,7 @@ public class MenuMain implements Runnable{
 
         this.cleanUp();
         DisplayManager.closeDisplay();
+        new Main().run();
     }
 
     public void init(){
